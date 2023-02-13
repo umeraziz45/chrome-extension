@@ -1,0 +1,73 @@
+*, *::before, *::after {
+box-sizing: border-box;
+}
+
+* {
+margin: 0;
+padding: 0;
+font: inherit;
+}
+
+html {
+color-scheme: dark light;
+}
+
+body {
+min-height: 100vh;
+font-size: 1rem;
+min-width: 400px;
+}
+
+img, picture, svg, video {
+display: block;
+max-width: 100%;
+}
+
+body {
+  background: #000;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+input {
+  width: 100%;
+  padding: .5em 0.25em;
+  margin: .5em 0em;
+  border-radius: 5px;
+}
+
+.btn {
+  padding: 0.5em 1em;
+  background: #5f9341;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.savedLeadList,
+p {
+  color: yellowgreen;
+  background: #fff;
+  font-size: 1.5rem;
+  list-style: none;
+  border-radius: 5px;
+}
+
+.savedLeadList li {
+  margin: .5em .5em;
+  padding: .5em 0;
+}
+
+p {
+  margin: 1em 0;
+  padding: 0.5em;
+}
+
+
+
