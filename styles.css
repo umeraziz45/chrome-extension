@@ -50,6 +50,11 @@ input {
   font-weight: bold;
 }
 
+.clearLeads {
+  color: #5f9341;
+  background: #fff;
+}
+
 .savedLeadList,
 p {
   color: yellowgreen;

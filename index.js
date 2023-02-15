@@ -4,32 +4,58 @@ const inputField = document.querySelector('.input-elem');
 const savedLeadList = document.querySelector('.savedLeadList');
 const clearLeads = document.querySelector('.clearLeads');
 const alertMsg = document.querySelector('.alertMsg');
+const saveBtn = document.querySelector('.saveBtn');
 
 let leadsArray = [];
+const tabs = [
+  {url: "https://github.com/umeraziz45"}
+]
+
+const render = (arr) => {
+  let leadsHtml = ''; 
+  for(let i = 0; i < arr.length; ++i){
+    leadsHtml += 
+    `
+      <li> 
+        <a href=${arr[i]} target="_blank"> 
+        ${arr[i]} 
+        </a>
+      </li>
+    `
+  } 
+  savedLeadList.innerHTML = leadsHtml;
+}
+
+
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem('myLead'));
+
+if (leadsFromLocalStorage){
+  leadsArray = leadsFromLocalStorage;
+  render(leadsArray);
+}
+
+saveBtn.addEventListener('click', () =>{
+  console.log(tabs[0].url);
+})
+
 
 const saveLead = () => {
   if(!inputField.value){
     alertMsg.textContent = 'Input not valid!';
-    console.log(inputField.value)
   } else {
     alertMsg.textContent = '';
     leadsArray.push(inputField.value);
     inputField.value = '';
-
-    let leadsHtml = '';
-
-    for(let i = 0; i < leadsArray.length; ++i){
-      leadsHtml += `<li> <a href=${leadsArray[i]} target="_blank"> ${leadsArray[i]} </a></li>`
-      console.log(leadsArray[i])
-    }
-
-    savedLeadList.innerHTML = leadsHtml;
+    localStorage.setItem('myLead', JSON.stringify(leadsArray));   
+    render(leadsArray);
   }
 }
+
 
 const clearInput = () => {
   savedLeadList.innerHTML = '';
   leadsArray = [];
+  localStorage.clear('myLead');
 }
 
 inputBtn.addEventListener('click', saveLead);
