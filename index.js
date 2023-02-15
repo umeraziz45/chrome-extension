@@ -7,9 +7,9 @@ const alertMsg = document.querySelector('.alertMsg');
 const saveBtn = document.querySelector('.saveBtn');
 
 let leadsArray = [];
-const tabs = [
-  {url: "https://github.com/umeraziz45"}
-]
+// const tabs = [
+//   {url: "https://github.com/umeraziz45"}
+// ]
 
 const render = (arr) => {
   let leadsHtml = ''; 
@@ -34,9 +34,6 @@ if (leadsFromLocalStorage){
   render(leadsArray);
 }
 
-saveBtn.addEventListener('click', () =>{
-  console.log(tabs[0].url);
-})
 
 
 const saveLead = () => {
@@ -60,3 +57,10 @@ const clearInput = () => {
 
 inputBtn.addEventListener('click', saveLead);
 clearLeads.addEventListener('click', clearInput);
+saveBtn.addEventListener('click', () =>{
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+    leadsArray.push(tabs[0].url);
+    localStorage.setItem('myLeads', JSON.stringify(leadsArray));
+    render(leadsArray);
+  })
+})
